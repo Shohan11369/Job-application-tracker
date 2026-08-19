@@ -15,7 +15,7 @@ import { AuthModal } from './src/components/AuthModal';
 export default function HomePage() {
   const [isDark, setIsDark] = useState(false);
   const toggleTheme = () => setIsDark(!isDark);
-
+  
   const [authModal, setAuthModal] = useState<{isOpen: boolean, type: 'login' | 'signup'}>({ isOpen: false, type: 'login' });
 
   const openAuth = (type: 'login' | 'signup') => setAuthModal({ isOpen: true, type });
@@ -33,8 +33,10 @@ export default function HomePage() {
       <Navbar isDark={isDark} toggleTheme={toggleTheme} onOpenLogin={() => openAuth('login')} onOpenSignup={() => openAuth('signup')} />
       <AuthModal isOpen={authModal.isOpen} onClose={closeAuth} type={authModal.type} isDark={isDark} />
       <Hero isDark={isDark} />
-...
-
+      <FeaturedJobs isDark={isDark} />
+      <Features isDark={isDark} />
+      <HowItWorks isDark={isDark} />
+      
       {/* Metrics Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-20 px-4 sm:px-6 lg:px-8">
         {stats.map((stat, idx) => {
@@ -77,7 +79,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-
+      
       <CTA isDark={isDark} />
       <Footer isDark={isDark} />
     </main>
