@@ -11,7 +11,7 @@ const navLinks = [
   { name: 'Calendar', href: '/calendar', icon: CalendarDays },
 ];
 
-export const Navbar = ({ isDark, toggleTheme }: { isDark: boolean, toggleTheme: () => void }) => {
+export const Navbar = ({ isDark, toggleTheme, onOpenLogin, onOpenSignup }: { isDark: boolean, toggleTheme: () => void, onOpenLogin: () => void, onOpenSignup: () => void }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -38,14 +38,14 @@ export const Navbar = ({ isDark, toggleTheme }: { isDark: boolean, toggleTheme: 
             <button onClick={toggleTheme} className={`p-2 rounded-lg transition-colors ${isDark ? 'bg-white/10 text-white' : 'bg-gray-100 text-gray-900'}`}>
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
-            <Link href="/login" className={`font-medium flex items-center gap-1 ${isDark ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-indigo-600'}`}>
+            <button onClick={onOpenLogin} className={`font-medium flex items-center gap-1 ${isDark ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-indigo-600'}`}>
               <LogIn size={18} />
               Login
-            </Link>
-            <Link href="/signup" className="flex items-center gap-1 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+            </button>
+            <button onClick={onOpenSignup} className="flex items-center gap-1 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
               <UserPlus size={18} />
               Signup
-            </Link>
+            </button>
             <button className="flex items-center gap-2 bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
               <PlusCircle size={18} />
               Add Job
@@ -71,14 +71,14 @@ export const Navbar = ({ isDark, toggleTheme }: { isDark: boolean, toggleTheme: 
             </Link>
           ))}
           <div className={`border-t pt-4 space-y-2 ${isDark ? 'border-white/10' : 'border-gray-100'}`}>
-            <Link href="/login" className={`flex items-center gap-2 py-2 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+            <button onClick={onOpenLogin} className={`flex items-center gap-2 py-2 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
               <LogIn size={20} />
               Login
-            </Link>
-            <Link href="/signup" className={`flex items-center gap-2 py-2 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+            </button>
+            <button onClick={onOpenSignup} className={`flex items-center gap-2 py-2 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
               <UserPlus size={20} />
               Signup
-            </Link>
+            </button>
             <button className="w-full flex items-center justify-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg">
               <PlusCircle size={18} />
               Add Job
